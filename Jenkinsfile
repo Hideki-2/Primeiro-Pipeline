@@ -1,26 +1,15 @@
-pipeline{
+pipeline {
     agent any
+
     stages {
-        stage("Build") {
-            steps{
-                echo 'Compilando 123456...'
-            }
-        }
-        stage('Test'){
-            steps{
-                echo 'Rodando testes'
-            }
-
-        }
-        stage('Deploy') {
+        stage('Checkout') {
             steps {
-                echo 'Deploy realizado com sucesso'
+                // Baixa o código do seu GitHub
+                checkout scm
             }
         }
-    }
 
-}
- stage('Validar HTML') {
+        stage('Validar HTML') {
             steps {
                 echo 'Iniciando validação do index.html...'
                 
